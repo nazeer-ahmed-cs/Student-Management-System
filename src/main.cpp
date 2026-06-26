@@ -11,7 +11,7 @@ string department[50] = {
     "Business Administration", "Art" };
 int roll_no[50] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 double marks[50][8]; // Marks for 8 semesters
-double totalMarks = 450;
+const double totalMarks = 450.0;
 // Initialize Marks Function
 void initializeMarks()
 {
@@ -42,8 +42,8 @@ void createRecord()
 	}
 	else
 	{
-		// Check if roll number already exists
-    for (int i = 1; i <= 50; i++) {
+    // Check if roll number already exists
+    for (int i = 0; i < 50; i++) {
         if (roll_no[i] == rollnum) {
             cout << "Error: Roll number already exists!" << endl;
             return;
@@ -51,7 +51,7 @@ void createRecord()
     }
 
     // Add new student
-    for (int i = 1; i <= 50; i++)
+    for (int i = 0; i < 50; i++)
 {
         if (roll_no[i] == 0)
 { // Find an empty spot
@@ -92,7 +92,7 @@ void displayAll() {
     cout << "\n========== All Student Records ==========\n";
     cout << "-----------------------------------------\n";
 
-    for (int i = 0; i <=50; i++) {
+    for (int i = 0; i < 50; i++) {
         if (roll_no[i] != 0) { // Display only if roll number exists
             cout << "Roll No : " << roll_no[i] << "\n";
             cout << "Name : " << names[i] << "\n";
@@ -103,7 +103,7 @@ void displayAll() {
 
             double totalGPA = 0;
 
-            for (int j = 0; j <= 8; j++) {
+            for (int j = 0; j < 8; j++) {
                 double percentage = sem_percentage(marks[i][j], totalMarks);
                 double gpa = sem_GPA(percentage);
                 totalGPA += gpa;
@@ -135,7 +135,7 @@ void searchRecord (){
 	else
 	{
 		
-    for (int i = 1; i <= 50; i++) {
+    for (int i = 0; i < 50; i++) {
         if (roll_no[i] == rollnum) {
             cout << "\nStudent Found!\n";
             cout << "Name : " << names[i] << endl;
@@ -145,7 +145,7 @@ void searchRecord (){
             cout << setw(10) << "Semester" << setw(15) << "Marks" << setw(15) << "Percentage" << setw(10) << "GPA\n";
             cout << "------------------------------------------------------------\n";
               double totalGPA = 0;
-            for (int j = 1; j <= 8; j++) {
+            for (int j = 0; j < 8; j++) {
                 double percentage = sem_percentage(marks[i][j], totalMarks);
                 double gpa = sem_GPA(percentage);
                 totalGPA += gpa;
@@ -174,7 +174,7 @@ void updateRecord() {
         return ;
 	}
 	
-		 for (int i = 1; i <= 50; i++) {
+		 for (int i = 0; i < 50; i++) {
         if (roll_no[i] == rollnum) {
             cout << "Updating record for Roll No: " << rollnum << endl;
             cout << "Current Name: " << names[i] << endl;
@@ -184,7 +184,7 @@ void updateRecord() {
             cout << "Enter new department name: ";
 // cin.ignore();
             getline(cin, department[i]);
-            for (int j = 1; j <= 8; j++) {
+            for (int j = 0; j < 8; j++) {
              bool flag=false;
                 while(!flag){
                 cout << "Enter new marks for Semester " << (j + 1) << ": ";
@@ -199,7 +199,7 @@ void updateRecord() {
             cout << setw(10) << "Semester" << setw(15) << "Marks" << setw(15) << "Percentage" << setw(10) << "GPA\n";
             cout << "------------------------------------------------------------\n";
               double totalGPA = 0;
-            for (int j = 1; j <=8; j++) {
+            for (int j = 0; j < 8; j++) {
                 double percentage = sem_percentage(marks[i][j], totalMarks);
                 double gpa = sem_GPA(percentage);
                 totalGPA += gpa;
@@ -241,7 +241,7 @@ void deleteRecord() {
         cout << "Error: Student with Roll No " << rollnum << " not found!" << endl;
         return ;
 	}
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 0; i < 50; i++) {
             if (roll_no[i] == rollnum) {
                 roll_no[i] = 0;
                 names[i] = "";
@@ -257,7 +257,7 @@ void deleteRecord() {
         cout << "Error: Student with Roll No " << rollnum << " not found!" << endl;
 
     } else if (choice == 2) {
-        for (int i = 1; i <= 15; i++) {
+        for (int i = 0; i < 15; i++) {
             roll_no[i] = 0;
             names[i] = "";
             for (int j = 0; j < 8; j++) {
